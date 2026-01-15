@@ -3,23 +3,19 @@ import math
 
 def main():
 
-    """
-    Run the calculateamounts and timetoamount function.
-    """
+    print("-------------------------------")
+    print("| codedrome.com               |")
+    print("| Logarithms: a Practical Use |")
+    print("-------------------------------\n")
 
-    print("-----------------")
-    print("| codedrome.com |")
-    print("| Logarithms    |")
-    print("-----------------\n")
+    calculateamounts(1000.0, 1.1, 12)
 
-    calculateamounts(1000, 1.1, 12)
+    print()
 
-    print("")
-
-    timetoamount(1000, 1.1, 3138.43)
+    timetoamount(1000.0, 1.1, 3138.43)
 
 
-def calculateamounts(startamount, interest, years):
+def calculateamounts(startamount: float, interest: float, years: int) -> None:
 
     """
     Calculate totals including compound interest from arguments,
@@ -31,20 +27,20 @@ def calculateamounts(startamount, interest, years):
     # Due to operator precedence ** is evaluated before *
     endamount = startamount * interest ** years
 
-    print("startamount {:.2f}".format(startamount))
-    print("years       {:d}".format(years))
-    print("interest    {:.2f}%".format((interest - 1) * 100))
-    print("endamount   {:.2f}\n".format(endamount))
+    print(f"startamount {startamount:.2f}")
+    print(f"years       {years:d}")
+    print(f"interest    {(interest - 1) * 100:.2f}%")
+    print(f"endamount   {endamount:.2f}\n")
 
     # Calculate all yearly amounts.
     for y in range(1, years + 1):
 
         currentamount*= interest
 
-        print("Year {:2d}: {:.2f}".format(y, currentamount))
+        print(f"Year {y:2d}: {currentamount:.2f}")
 
 
-def timetoamount(startamount, interest, requiredamount):
+def timetoamount(startamount: float, interest: float, requiredamount: float) -> None:
 
     """
     Calculate and print the number of years required to reach
@@ -53,10 +49,12 @@ def timetoamount(startamount, interest, requiredamount):
 
     yearstorequiredamount = math.log(requiredamount / startamount) / math.log(interest)
 
-    print("startamount           {:.2f}".format(startamount))
-    print("interest              {:.2f}%".format((interest - 1) * 100))
-    print("requiredamount        {:.2f}".format(requiredamount))
-    print("yearstorequiredamount {:.2f}".format(yearstorequiredamount))
+    print(f"startamount           {startamount:.2f}")
+    print(f"interest              {(interest - 1) * 100:.2f}%")
+    print(f"requiredamount        {requiredamount:.2f}")
+    print(f"yearstorequiredamount {yearstorequiredamount:.2f}")
 
 
-main()
+if __name__ == "__main__":
+
+    main()
